@@ -5,6 +5,9 @@
         <group>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/_MySQL/SQLPractice1/src/Index.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/_MySQL/SQLPractice1/src/mysql/Connector.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/_MySQL/SQLPractice1/src/util/UsersSeeder.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/_MySQL/SQLPractice1/src/controllers/UserController.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/_MySQL/SQLPractice1/src/mysql/SQL.java</file>
         </group>
     </open-files>
 </project-private>

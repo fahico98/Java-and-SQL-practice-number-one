@@ -5,7 +5,7 @@ import mysql.Connector;
 import util.UsersSeeder;
 import util.DataFaker;
 
-public class UserController {
+public class UserController{
    
    private Connector connector;
    private DataFaker faker;
@@ -24,6 +24,7 @@ public class UserController {
     * false si se presenta algún error.
     */
    private boolean createUserTable(){
+      
       return true;
    }
    

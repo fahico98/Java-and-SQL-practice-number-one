@@ -27,42 +27,17 @@ public class SQL{
    /**
     * Ejecuta una consulta de tipo SELECT.
     * 
-    * @param fields campos a seleccionar.
-    * @param table nombre de la tabla.
-    * @param terms condiciones de la consulta.
-    * @param values valores de las condiciones.
-    * @param typesOfValues tipo de los valores de las condiciones.
-    * @return ???
+    * @param query consulta a ser ejecutada.
+    * @return ResultSet con los datos obtenidos por la consulta.
     */
-   public boolean selectQuery(String fields, String table, String terms, String[] values, String[] typesOfValues){
+   public boolean executeSelectQuery(String query){
       
       try{
          
          if(!connector.connect()) return false;
-         connector.statement = connector.connection.prepareStatement(
-            "SELECT " + fields + " FROM " + table + " WHERE (" + terms + ")"
-         );
-         
-         for(int i = 0; i < values.length; i++){
-            switch(typesOfValues[i]){
-               
-               case "String":
-                  connector.statement.setString(i + 1, values[i]);
-                  break;
-               case "Integer":
-                  connector.statement.setInt(i + 1, Integer.parseInt(values[i]));
-                  break;
-               case "Double":
-                  connector.statement.setDouble(i + 1, Double.parseDouble(values[i]));
-                  break;
-               case "Boolean":
-                  connector.statement.setBoolean(i + 1, Boolean.parseBoolean(values[i]));
-                  break;
-            }
-         }
-         
-         connector.statement.execute();
-         return connector.disconnect();
+         connector.statement = connector.connection.prepareStatement(query);
+         if(!connector.disconnect()) return false;
+         return connector.statement.execute();
          
       }catch(SQLException e){
          System.out.println("\nERROR: " + e.getMessage());
@@ -71,15 +46,26 @@ public class SQL{
       return false;
    }
    
-   public boolean updateQuery(String query){
-      return true;
-   }
-   
-   public boolean insertQuery(String query){
-      return true;
-   }
-   
-   public boolean deleteQuery(String query){
-      return true;
+   /**
+    * Ejecuta una consulta de tipo UPDATE, INSERT INTO, DELETE o de otro tipo.
+    * 
+    * @param query consulta a ejecutar.
+    * @return true si la consulta fue ejecutada con exito, false si ocurrió
+    * algún error.
+    */
+   public boolean executeQuery(String query){
+      try{
+         
+         if(!connector.connect()) return false;
+         connector.statement = connector.connection.prepareStatement(query);
+         if(!connector.disconnect()) return false;
+         connector.statement.execute();
+         return true;
+         
+      }catch(SQLException e){
+         System.out.println("\nERROR: " + e.getMessage());
+      }
+      
+      return false;
    }
 }

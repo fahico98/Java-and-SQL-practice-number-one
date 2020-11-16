@@ -3,16 +3,18 @@ package models;
 
 public class User {
    
-   private String name, lastname, phoneNumber, username;
+   private String name, lastname, phoneNumber, username, email;
    private long id;
    private int age;
    private char gender;
    
-   public User(String name, String lastname, String phoneNumber, String username, long id, int age, char gender){
+   public User(String name, String lastname, String phoneNumber, String username, String email, long id, int age,
+         char gender){
       this.name = name;
       this.lastname = lastname;
       this.phoneNumber = phoneNumber;
       this.username = username;
+      this.email = email;
       this.id = id;
       this.age = age;
       this.gender = gender;
@@ -23,6 +25,7 @@ public class User {
       this.lastname = "";
       this.phoneNumber = "";
       this.username = "";
+      this.email = "";
       this.id = 0;
       this.age = 0;
       this.gender = 'x';
@@ -82,6 +85,20 @@ public class User {
     */
    public void setUsername(String username) {
       this.username = username;
+   }
+   
+   /**
+    * @return the email
+    */
+   public String getEmail() {
+      return email;
+   }
+
+   /**
+    * @param email the email to set
+    */
+   public void setEmail(String email) {
+      this.email = email;
    }
 
    /**
